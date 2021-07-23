@@ -1,0 +1,4 @@
+[submodule "lib/lib_div/embedQR"]
+	path = lib/lib_div/embedQR
+	url = git@github.com:resmh/embedQR.git
+	branch = development-dist
