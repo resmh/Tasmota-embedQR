@@ -1082,4 +1082,10 @@
 #define D_EMBEDQR_SCAN                         "Parsing..."
 #define D_EMBEDQR_SCANS                        "Scan successful!"
 
+// CAPCOEX
+#define D_CAP_BLOCKED "CAP blocked"
+#define D_CAP_REDIRECT "CAP served"
+#define D_CAP_DISABLED "CAP disabled"
+#define D_CAP_ENABLED "CAP enabled"
+
 #endif  // _LANGUAGE_EN_GB_H_
