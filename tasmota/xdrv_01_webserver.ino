@@ -112,6 +112,27 @@ const char HTTP_SCRIPT_WIFI[] PROGMEM =
     "eb('p1').focus();"
   "}";
 
+#ifdef USE_JAVASCRIPT_ES6
+#ifdef USE_EMBEDQR
+  // embedQR Bootstrap
+  #ifdef USE_UNISHOX_COMPRESSION
+    #include "./html_compressed/HTTP_SCRIPT_EMBEDQR_BOOTSTRAP.h"
+  #else
+    #include "./html_uncompressed/HTTP_SCRIPT_EMBEDQR_BOOTSTRAP.h"
+  #endif
+  // embedQR User Interface
+  #include "./html_uncompressed/HTTP_SCRIPT_EMBEDQR_INTERFACE.h"
+  // embedQR Control Module (GZIP)
+  #include "embedQR.gz.h"
+  // embedQR Engine jsQR (GZIP)
+  #include "embedQR.engine.gz.h"
+  // embedQR Captive Portal Interference Warning
+  #ifndef NO_CAPTIVE_PORTAL
+    #include "./html_uncompressed/HTTP_SCRIPT_EMBEDQR_CAPWARN.h"
+  #endif
+#endif
+#endif
+
 const char HTTP_SCRIPT_HIDE[] PROGMEM =
   "function hidBtns() {"
     "eb('butmo').style.display='none';"
