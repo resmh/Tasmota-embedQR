@@ -817,6 +817,18 @@ void WSContentStart_P(const char* title) {
   WSContentStart_P(title, true);
 }
 
+#ifdef USE_JAVASCRIPT_ES6
+void WSModuleSend() {
+  WSContentSend_P(PSTR("<script type='module'>"));
+#ifdef USE_EMBEDQR
+  if ( WifiIsInManagerMode() ) {
+    WSContentSend_P(EMBEDQR_BOOTSTRAP, PSTR(D_EMBEDQR_SCANI), PSTR(D_EMBEDQR_SCANF), PSTR(D_EMBEDQR_LOADF), PSTR(D_EMBEDQR_READY), PSTR(D_EMBEDQR_LOAD), PSTR(D_EMBEDQR_SCAN), PSTR(D_EMBEDQR_SCANS));
+  }
+#endif
+  WSContentSend_P(PSTR("</script>"));
+}
+#endif
+
 void WSContentSendStyle_P(const char* formatP, ...) {
   if ( WifiIsInManagerMode() && (!Web.initial_config) ) {
     if (WifiConfigCounter()) {
@@ -824,6 +836,10 @@ void WSContentSendStyle_P(const char* formatP, ...) {
     }
   }
   WSContentSend_P(HTTP_HEAD_LAST_SCRIPT);
+
+#ifdef USE_JAVASCRIPT_ES6  
+  WSModuleSend();
+#endif
 
   WSContentSend_P(HTTP_HEAD_STYLE1, WebColor(COL_FORM), WebColor(COL_INPUT), WebColor(COL_INPUT_TEXT), WebColor(COL_INPUT),
                   WebColor(COL_INPUT_TEXT), WebColor(COL_CONSOLE), WebColor(COL_CONSOLE_TEXT), WebColor(COL_BACKGROUND));
