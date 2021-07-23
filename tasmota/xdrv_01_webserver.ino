@@ -1883,6 +1883,24 @@ void HandleWifiConfiguration(void) {
   WSContentSendStyle();
 #endif  // USE_ENHANCED_GUI_WIFI_SCAN
 
+#ifdef USE_JAVASCRIPT_ES6
+#ifdef USE_EMBEDQR
+  if (WifiIsInManagerMode()) {
+	// Transmit embedQR Interface
+    WSContentSend_P(EMBEDQR_INTERFACE, WebColor(COL_TEXT)); yield();
+	// Transmit embedQR Captive Portal Interference Warning
+    #ifndef NO_CAPTIVE_PORTAL
+    #ifdef CAPTIVE_PORTAL_COEXISTENCE
+      if (Web.capstate == 1) { WSContentSend_P(EMBEDQR_CAPWARN, WiFi.softAPIP().toString().c_str(), PSTR(D_EMBEDQR_QUIRKS), WiFi.softAPIP().toString().c_str()); yield(); }
+    #else
+      WSContentSend_P(EMBEDQR_CAPWARN, PSTR(D_EMBEDQR_QUIRKS)); yield();
+    #endif
+    #endif
+  }
+#endif
+#endif
+
+
   bool limitScannedNetworks = true;
   if (HTTP_MANAGER_RESET_ONLY != Web.state) {
     if (WIFI_TESTING == Web.wifiTest) {
