@@ -542,6 +542,12 @@ const WebServerDispatch_t WebServerDispatch[] PROGMEM = {
   { "rt", HTTP_ANY, HandleResetConfiguration },
   { "in", HTTP_ANY, HandleInformation },
 #endif  // Not FIRMWARE_MINIMAL
+#ifdef USE_JAVASCRIPT_ES6
+#ifdef USE_EMBEDQR
+  { "qc", HTTP_GET, HandleEmbedQRControl },
+  { "qr", HTTP_GET, HandleEmbedQREngine },
+#endif
+#endif
 };
 
 void WebServer_on(const char * prefix, void (*func)(void), uint8_t method = HTTP_ANY) {
@@ -2047,6 +2053,30 @@ void HandleWifiConfiguration(void) {
   }
   WSContentStop();
 }
+
+#ifdef USE_JAVASCRIPT_ES6
+#ifdef USE_EMBEDQR
+void HandleEmbedQRControl(void) {
+  Webserver->client().flush();
+  WSHeaderSend();
+  Webserver->sendHeader(F("Content-Encoding"), F("gzip")); yield();
+  Webserver->send_P(200, "text/javascript", EMBEDQR, EMBEDQR_SIZE); yield();
+  WSContentEnd(); yield();
+}
+#endif
+#endif
+
+#ifdef USE_JAVASCRIPT_ES6
+#ifdef USE_EMBEDQR
+void HandleEmbedQREngine(void) {
+  Webserver->client().flush();
+  WSHeaderSend();
+  Webserver->sendHeader(F("Content-Encoding"), F("gzip")); yield();
+  Webserver->send_P(200, "text/javascript", EMBEDQR_ENGINE, EMBEDQR_ENGINE_SIZE); yield();
+  WSContentEnd(); yield();
+}
+#endif
+#endif
 
 void WifiSaveSettings(void) {
   String cmnd = F(D_CMND_BACKLOG "0 ");
