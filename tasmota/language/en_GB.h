@@ -1072,4 +1072,14 @@
 #define D_NEOPOOL_PH_LOW                  "too low"
 #define D_NEOPOOL_PUMP_TIME_EXCEEDED      "pump time exceeded"
 
+// embedqr
+#define D_EMBEDQR_QUIRKS                       "In case of problems, stay connected and use your default browser to open"
+#define D_EMBEDQR_SCANI                        "No WiFi settings found. Tap to retry."
+#define D_EMBEDQR_SCANF                        "Scan failed. Tap to retry."
+#define D_EMBEDQR_LOADF                        "Failed to load Reader."
+#define D_EMBEDQR_READY                        "Scan QR"
+#define D_EMBEDQR_LOAD                         "Loading Reader..."
+#define D_EMBEDQR_SCAN                         "Parsing..."
+#define D_EMBEDQR_SCANS                        "Scan successful!"
+
 #endif  // _LANGUAGE_EN_GB_H_
