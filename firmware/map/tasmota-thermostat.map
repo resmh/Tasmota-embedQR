@@ -38483,32 +38483,32 @@ END GROUP
  .irom.text.HTTP_SCRIPT_EMBEDQR_INTERFACE.h.1.559
                 0x000000004029221f       0xa2 .pio/build/tasmota-thermostat/src/tasmota.ino.cpp.o
  .irom.text.HTTP_SCRIPT_EMBEDQR_BOOTSTRAP.h.3.558
-                0x00000000402922c1      0x1e2 .pio/build/tasmota-thermostat/src/tasmota.ino.cpp.o
+                0x00000000402922c1      0x1e1 .pio/build/tasmota-thermostat/src/tasmota.ino.cpp.o
  .irom.text.xdrv_01_webserver.ino.109.557
-                0x00000000402924a3       0x4b .pio/build/tasmota-thermostat/src/tasmota.ino.cpp.o
+                0x00000000402924a2       0x4b .pio/build/tasmota-thermostat/src/tasmota.ino.cpp.o
  .irom.text.HTTP_SCRIPT_ROOT_PART2.h.6.556
-                0x00000000402924ee       0xc1 .pio/build/tasmota-thermostat/src/tasmota.ino.cpp.o
+                0x00000000402924ed       0xc1 .pio/build/tasmota-thermostat/src/tasmota.ino.cpp.o
  .irom.text.HTTP_SCRIPT_ROOT_NO_WEB_DISPLAY.h.6.555
-                0x00000000402925af      0x159 .pio/build/tasmota-thermostat/src/tasmota.ino.cpp.o
+                0x00000000402925ae      0x159 .pio/build/tasmota-thermostat/src/tasmota.ino.cpp.o
  .irom.text.xdrv_01_webserver.ino.78.554
-                0x0000000040292708       0x71 .pio/build/tasmota-thermostat/src/tasmota.ino.cpp.o
+                0x0000000040292707       0x71 .pio/build/tasmota-thermostat/src/tasmota.ino.cpp.o
  .irom.text.HTTP_HEADER1_ES6.h.6.553
-                0x0000000040292779      0x11c .pio/build/tasmota-thermostat/src/tasmota.ino.cpp.o
+                0x0000000040292778      0x11c .pio/build/tasmota-thermostat/src/tasmota.ino.cpp.o
  .irom.text.support_tasmota.ino.21.472
-                0x0000000040292895        0xf .pio/build/tasmota-thermostat/src/tasmota.ino.cpp.o
+                0x0000000040292894        0xf .pio/build/tasmota-thermostat/src/tasmota.ino.cpp.o
  .irom.text.support_tasmota.ino.20.471
-                0x00000000402928a4        0xf .pio/build/tasmota-thermostat/src/tasmota.ino.cpp.o
+                0x00000000402928a3        0xf .pio/build/tasmota-thermostat/src/tasmota.ino.cpp.o
  .irom.text.support_switch.ino.39.469
-                0x00000000402928b3       0x43 .pio/build/tasmota-thermostat/src/tasmota.ino.cpp.o
+                0x00000000402928b2       0x43 .pio/build/tasmota-thermostat/src/tasmota.ino.cpp.o
  .irom.text.support_rtc.ino.37.457
-                0x00000000402928f6       0x25 .pio/build/tasmota-thermostat/src/tasmota.ino.cpp.o
+                0x00000000402928f5       0x25 .pio/build/tasmota-thermostat/src/tasmota.ino.cpp.o
  .irom.text.support_rtc.ino.36.456
-                0x000000004029291b        0xc .pio/build/tasmota-thermostat/src/tasmota.ino.cpp.o
+                0x000000004029291a        0xc .pio/build/tasmota-thermostat/src/tasmota.ino.cpp.o
  .irom.text.support_device_groups.ino.31.421
-                0x0000000040292927        0xc .pio/build/tasmota-thermostat/src/tasmota.ino.cpp.o
+                0x0000000040292926        0xc .pio/build/tasmota-thermostat/src/tasmota.ino.cpp.o
  .irom.text.support_command.ino.83.331
-                0x0000000040292933       0x33 .pio/build/tasmota-thermostat/src/tasmota.ino.cpp.o
- *fill*         0x0000000040292966        0x2 
+                0x0000000040292932       0x33 .pio/build/tasmota-thermostat/src/tasmota.ino.cpp.o
+ *fill*         0x0000000040292965        0x3 
  .irom.text.support_command.ino.55.330
                 0x0000000040292968      0x160 .pio/build/tasmota-thermostat/src/tasmota.ino.cpp.o
  .irom.text.support_command.ino.53.329
