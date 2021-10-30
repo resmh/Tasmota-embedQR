@@ -1,0 +1,77 @@
+name: development-embedQR-CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the development branch
+  push:
+    branches: [ development-embedQR ]
+  pull_request:
+    branches: [ development-embedQR ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  tasmota-thermostat:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: 'true'
+          token: ${{ secrets.EMBEDQR_TOKEN }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v1
+      - name: Install dependencies
+        run: |
+          pip install -U platformio
+
+      - name: Build Tasmota-Thermostat
+        run: platformio run -e tasmota-thermostat
+      - name: Store Tasmota-Thermostat
+        uses: actions/upload-artifact@v2
+        with:
+          name: firmware-tasmota-thermostat
+          path: |
+            ./.pio/build/tasmota-thermostat/firmware.bin
+            ./.pio/build/tasmota-thermostat/firmware.elf
+            
+      - name: Build Tasmota-Thermostat-Basic
+        run: platformio run -e tasmota-thermostat-basic
+      - name: Store Tasmota-Thermostat-Basic
+        uses: actions/upload-artifact@v2
+        with:
+          name: firmware-tasmota-thermostat-basic
+          path: |
+            ./.pio/build/tasmota-thermostat-basic/firmware.bin
+            ./.pio/build/tasmota-thermostat-basic/firmware.elf
+
+      - name: Switch to firmware branch
+        run: git checkout -f --recurse-submodules firmware-embedQR
+      - name: Clean up
+        run: |
+          git rm -rf ./* || true
+          rm -rf ./* || true
+          if [ -d ./.cache ]; then git rm -rf ./.cache || true; rm -rf ./.cache || true; fi
+          if [ -d ./.pio ]; then git rm -rf ./.pio || true; rm -rf ./.pio || true; fi
+
+      - name: Add Tasmota-Thermostat firmware image
+        uses: actions/download-artifact@v2
+        with:
+          name: firmware-tasmota-thermostat
+          path: ./firmware/tasmota-thermostat
+      - name: Add Tasmota-Thermostat-Basic firmware image
+        uses: actions/download-artifact@v2
+        with:
+          name: firmware-tasmota-thermostat-basic
+          path: ./firmware/tasmota-thermostat-basic
+
+      - name: Commit and push to firmware branch
+        uses: resmh/push@master-pushdist
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: 'firmware-embedQR'
+
